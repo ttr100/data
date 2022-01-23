@@ -12,16 +12,17 @@ content = String(content)
 // mengubah data dalam string
 // kedalam bentuk js
 // deserialization
+// let lines = content.split('\n')
+// for(let i = 0; i < lines.length ; i++){
+//   let line = lines[i]
+//   let splitLines = line.split('-')
+//   members.push({
+//     name: splitLines[0],
+//     score: parseInt(splitLines[1])
+//   })
+// }
 
-let lines = content.split('\n')
-for(let i = 0; i < lines.length ; i++){
-  let line = lines[i]
-  let splitLines = line.split('-')
-  members.push({
-    name: splitLines[0],
-    score: parseInt(splitLines[1])
-  })
-}
+members  = JSON.parse(content)
 
 console.log('first member is ' + members[0].name)
 
