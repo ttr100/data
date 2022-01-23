@@ -13,8 +13,17 @@ content = String(content)
 // kedalam bentuk js
 // deserialization
 
-members = content.split('-')
-console.log('first member is ' + members[0])
+let lines = content.split('\n')
+for(let i = 0; i < lines.length ; i++){
+  let line = lines[i]
+  let splitLines = line.split('-')
+  members.push({
+    name: splitLines[0],
+    score: parseInt(splitLines[1])
+  })
+}
+
+console.log('first member is ' + members[0].name)
 
 console.log('members: ')
 console.log(members)
