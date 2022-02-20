@@ -28,9 +28,27 @@ function runWithCallback(){
   db.close();
 }
 
+async function testWrap(){
+  var db = new sqlite3.Database('app.db');
+  let getStudents = function(){
+    return new Promise((resolve, reject) => {
+      db.all("SELECT id AS studentID, name, age FROM students", function(err, rows) {
+        if(err){
+          reject(err);
+        }
+        else{
+          resolve({STSUDENTS: rows});
+        }
+      })
+    })
+  }
+
+  let x = await getStudents();
+  console.log(x);
+}
+
 
 var sqlite = require('sqlite');
-
 // promise
 async function runWithAsync(){
   const db2 = await sqlite.open({
@@ -60,4 +78,6 @@ async function runWithAsync(){
 
 
 // runWithCallback();
-runWithAsync();
+// runWithAsync();
+//
+testWrap();
